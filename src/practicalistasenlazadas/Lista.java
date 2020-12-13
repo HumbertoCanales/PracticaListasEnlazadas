@@ -69,11 +69,45 @@ public class Lista {
     }
     
     public void delete(int value){
-        
+        Nodo recorrer = raiz;
+        if (find(value)) {
+            // Consulta si el nodo a eliminar es el pirmero
+            if (raiz.value == value) {
+                // El primer nodo apunta al siguiente.
+                raiz = raiz.next;
+            } else{
+                // Crea ua copia de la lista.
+                Nodo aux = raiz;
+                // Recorre la lista hasta llegar al nodo anterior 
+                // al de referencia.
+                while(aux.getNext().value != value){
+                    aux = aux.getNext();
+                }
+                // Guarda el nodo siguiente del nodo a eliminar.
+                Nodo next = aux.getNext().getNext();
+                // Enlaza el nodo anterior al de eliminar con el 
+                // sguiente despues de el.
+                aux.setNext(next);  
+            }
+            // Disminuye el contador de tamaño de la lista.
+            System.out.println("Se ha eliminado correctamente el valor "+ value);
+        }
+        else
+        {
+            System.out.println("El valor introducido no existe en la lista");
+        }
     }
     
     public void edit(int value_1, int value_2){
-        
+        if (find(value_1)) {
+            delete(value_1);
+            add(value_2);
+            System.out.println("El valor "+value_1+" se ha editado correctamente a "+ value_2);
+        }
+        else
+        {
+            System.out.println("El valor introducido no existe en la lista");
+        }
     }
     
     public void credits(){

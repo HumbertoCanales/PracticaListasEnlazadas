@@ -68,8 +68,9 @@ public class PracticaListasEnlazadas {
                 case 6:
                     System.out.println("Inserta el valor a modificar");
                     val = input.nextInt();
-                    
-                    //list.edit(val, val2);
+                    System.out.println("Inserta el valor por el cual quieres modificarlo");
+                    val2 = input.nextInt();
+                    list.edit(val, val2);
                     msg();
                     next = input.next();
                 break;
